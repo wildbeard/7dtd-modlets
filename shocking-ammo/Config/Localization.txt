@@ -1,0 +1,5 @@
+Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate Text
+shockingAmmo9mmAmmo,items,Ammo,,,Shocking 9mm Ammo,
+shockingAmmo9mmAmmoDesc,items,Ammo,,,Ammo with a chance to shock the enemy for 2.5s. Has a chance to spread to nearby enemies.,
+buffShockedAmmo,buffs,Buff,,,You are shocked,
+statShockDuration,ui_display,Item stat,,Shock Duration

@@ -1,0 +1,36 @@
+<configs>
+  <append xpath="/buffs">
+    <buff name="buffShockedAmmo" hidden="true">
+      <damage_type value="electrical" />
+      <stack_type value="replace" />
+      <duration value="0" />
+
+      <effect_group>
+        <requirement name="CVarCompare" cvar="buffShockedAmmoDuration" operation="LT" value="5" />
+        <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="buffShockedAmmoDuration" operation="set" value="2.5" />
+        <triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="buffShockedAmmoDuration" operation="set" value="2.5" />
+      </effect_group>
+
+      <effect_group>
+        <triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffShocked" />
+
+        <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="buffShockedAmmoDuration" operation="add" value="-1" />
+        <triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffShockedAmmo">
+          <requirement name="CVarCompare" cvar="buffShockedAmmoDuration" operation="LTE" value="0" />
+        </triggered_effect>
+        <triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="buffShockedAmmoDuration" operation="set" value="0" />
+      </effect_group>
+
+      <effect_group>
+        <requirement name="CVarCompare" cvar="buffShockWeaponDuration" operation="LTE" value="1" />
+        <triggered_effect trigger="onSelfBuffUpdate" action="Ragdoll" duration="1.5" />
+      </effect_group>
+
+      <effect_group>
+        <passive_effect name="HealthChangeOT" operation="base_subtract" duration="0,8,14,18" value="1,5,11,13">
+          <requirement name="EntityTagCompare" tags="player" />
+        </passive_effect>
+      </effect_group>
+    </buff>
+  </append>
+</configs>

@@ -1,0 +1,46 @@
+<configs>
+  <append xpath="/items">
+    <item name="shockingAmmo9mmAmmo">
+      <property name="Tags" value="ammo,ammo9mm" />
+      <property name="Damage_type" value="Electrical" />
+      <property name="DescriptionKey" value="shockingAmmo9mmAmmoDesc" />
+      <property name="DisplayType" value="ammoBullet" />
+      <property name="HoldType" value="45" />
+      <property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab" />
+      <property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab" />
+      <property name="Material" value="Mbrass" />
+      <property name="MeltTimePerUnit" value=".4" />
+      <property name="Stacknumber" value="300" /> <!-- STK ammo high -->
+      <property name="EconomicValue" value="11" />
+      <property name="TraderStageTemplate" value="ammoTier1" />
+      <property name="Group" value="Ammo/Weapons,Ammo,Ranged Weapons" />
+
+      <effect_group name="shockingAmmo9mmAmmo" tiered="false">
+        <passive_effect name="EntityDamage" operation="base_set" value="30" tags="perkGunslinger,9mmGun" />
+        <passive_effect name="BlockDamage" operation="base_set" value="4" tags="perkGunslinger" />
+        <passive_effect name="BlockDamage" operation="base_add" value="18" tags="barrelExplosive" />
+        <passive_effect name="DamageModifier" operation="perc_add" value="-.8" tags="earth" />
+        <passive_effect name="DamageModifier" operation="perc_add" value="2" tags="wood" />
+        <!---->
+        <!--<passive_effect name="EntityDamage" operation="perc_add" value=".15,.95" tags="perkElectrocutioner" />-->
+        <!---->
+        <triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="$buffShockedAmmoDuration" operation="set" value="2.5" />
+        <triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffShockedAmmo" duration="2.5">
+          <requirement name="RandomRoll" seed_type="Random" min_max="1,100" operation="LTE" value="30" />
+        </triggered_effect>
+
+        <triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="otherAOE" range="1.5" target_tags="zombie,animal" buff="buffShockedAmmo" duration="2.5">
+          <requirement name="RandomRoll" seed_type="Random" min_max="1,100" operation="LTE" value="40" />
+        </triggered_effect>
+
+        <display_value name="dShockDuration" value="2.5" />
+      </effect_group>
+    </item>
+  </append>
+
+  <append xpath="/items/item[@name='gunHandgunT3SMG5'
+    or @name='gunHandgunT1Pistol'
+    or @name='gunHandgunT0PipePistol']/property[@class='Action0']">
+    <property name="Magazine_items" value="ammo9mmBulletBall,ammo9mmBulletHP,ammo9mmBulletAP,shockingAmmo9mmAmmo" />
+  </append>
+</configs>
