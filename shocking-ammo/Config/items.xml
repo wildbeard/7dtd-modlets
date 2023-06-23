@@ -26,11 +26,11 @@
         <!---->
         <triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="$buffShockedAmmoDuration" operation="set" value="2.5" />
         <triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffShockedAmmo" duration="2.5">
-          <requirement name="RandomRoll" seed_type="Random" min_max="1,100" operation="LTE" value="30" />
+          <requirement name="RandomRoll" seed_type="Random" min_max="1,100" operation="LTE" value="25" />
         </triggered_effect>
 
         <triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="otherAOE" range="1.5" target_tags="zombie,animal" buff="buffShockedAmmo" duration="2.5">
-          <requirement name="RandomRoll" seed_type="Random" min_max="1,100" operation="LTE" value="40" />
+          <requirement name="RandomRoll" seed_type="Random" min_max="1,100" operation="LTE" value="30" />
         </triggered_effect>
 
         <display_value name="dShockDuration" value="2.5" />
