@@ -1,0 +1,27 @@
+<configs>
+  <append xpath="/recipes">
+    <recipe name="shockingAmmo9mmAmmo" count="1" craft_area="workbench" tags="workbenchCrafting">
+      <ingredient name="resourceBulletTip" count="1" />
+      <ingredient name="resourceGunPowder" count="1" />
+      <ingredient name="resourceBulletCasing" count="1" />
+      <ingredient name="resourcePotassiumNitratePowder" count="1" />
+      <ingredient name="resourceScrapLead" count="1" />
+    </recipe>
+
+    <recipe name="shockingAmmo762mmAmmo" count="1" craft_area="workbench" tags="workbenchCrafting">
+      <ingredient name="resourceBulletTip" count="1" />
+      <ingredient name="resourceGunPowder" count="3" />
+      <ingredient name="resourceBulletCasing" count="1" />
+      <ingredient name="resourcePotassiumNitratePowder" count="1" />
+      <ingredient name="resourceScrapLead" count="1" />
+    </recipe>
+
+    <recipe name="shockingAmmo44MagnumAmmo" count="1" craft_area="workbench" tags="workbenchCrafting">
+      <ingredient name="resourceBulletTip" count="1" />
+      <ingredient name="resourceGunPowder" count="2" />
+      <ingredient name="resourceBulletCasing" count="1" />
+      <ingredient name="resourcePotassiumNitratePowder" count="1" />
+      <ingredient name="resourceScrapLead" count="1" />
+    </recipe>
+  </append>
+</configs>
