@@ -21,7 +21,10 @@
         <passive_effect name="BlockDamage" operation="base_add" value="18" tags="barrelExplosive" />
         <passive_effect name="DamageModifier" operation="perc_add" value="-.8" tags="earth" />
         <passive_effect name="DamageModifier" operation="perc_add" value="2" tags="wood" />
-        <!---->
+      </effect_group>
+
+      <effect_group name="shockingAmmo" tiered="false">
+        <!--@todo This appears to be causing buff to not work -->
         <!--<passive_effect name="EntityDamage" operation="perc_add" value=".15,.95" tags="perkElectrocutioner" />-->
         <!---->
         <triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="$buffShockedAmmoDuration" operation="set" value="2.5" />
@@ -30,7 +33,73 @@
         </triggered_effect>
 
         <triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="otherAOE" range="1.5" target_tags="zombie,animal" buff="buffShockedAmmo" duration="2.5">
-          <requirement name="RandomRoll" seed_type="Random" min_max="1,100" operation="LTE" value="30" />
+          <requirement name="RandomRoll" seed_type="Random" min_max="1,100" operation="LTE" value="10" />
+        </triggered_effect>
+
+        <display_value name="dShockDuration" value="2.5" />
+      </effect_group>
+    </item>
+
+    <item name="shockingAmmo762mmAmmo">
+      <property name="Extends" value="shockingAmmo9mmAmmo" />
+      <property name="Stacknumber" value="300" /> <!-- STK ammo low -->
+      <property name="EconomicValue" value="11" />
+      <property name="TraderStageTemplate" value="ammoTier1" />
+
+      <effect_group name="shockingAmmo762mmAmmo" tiered="false">
+        <passive_effect name="EntityDamage" operation="base_set" value="45" tags="perkDeadEye,perkMachineGunner" />
+        <passive_effect name="BlockDamage" operation="base_set" value="8" tags="perkDeadEye,perkMachineGunner" />
+        <passive_effect name="BlockDamage" operation="base_add" value="16" tags="barrelExplosive" />
+        <passive_effect name="DamageModifier" operation="perc_add" value="-.8" tags="earth" />
+        <passive_effect name="DamageModifier" operation="perc_add" value="2" tags="wood" />
+      </effect_group>
+
+      <effect_group name="shockingAmmo" tiered="false">
+        <!--@todo This appears to be causing buff to not work -->
+        <!--<passive_effect name="EntityDamage" operation="perc_add" value=".15,.95" tags="perkElectrocutioner" />-->
+        <!---->
+        <triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="$buffShockedAmmoDuration" operation="set" value="2.5" />
+        <triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffShockedAmmo" duration="2.5">
+          <requirement name="RandomRoll" seed_type="Random" min_max="1,100" operation="LTE" value="25" />
+        </triggered_effect>
+
+        <triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="otherAOE" range="1.5" target_tags="zombie,animal" buff="buffShockedAmmo" duration="2.5">
+          <requirement name="RandomRoll" seed_type="Random" min_max="1,100" operation="LTE" value="10" />
+        </triggered_effect>
+
+        <display_value name="dShockDuration" value="2.5" />
+      </effect_group>
+    </item>
+
+    <item name="shockingAmmo44MagnumAmmo">
+      <property name="Extends" value="shockingAmmo9mmAmmo" />
+      <property name="Stacknumber" value="300" /> <!-- STK ammo low -->
+      <property name="EconomicValue" value="11" />
+      <property name="TraderStageTemplate" value="ammoTier1" />
+
+      <effect_group name="shockingAmmo44MagnumAmmo" tiered="false">
+        <!-- To split up the revolver and DVulture I'm providing base_set that the specific perk passives can latch on to -->
+        <passive_effect name="EntityDamage" operation="base_set" value="68" tags="perkGunslinger,revolver" />
+        <passive_effect name="BlockDamage" operation="base_set" value="12" tags="perkGunslinger" />
+        <passive_effect name="BlockDamage" operation="base_add" value="12" tags="barrelExplosive" />
+        <passive_effect name="EntityPenetrationCount" operation="base_set" value="1" tags="perkGunslinger">
+          <requirement name="ProgressionLevel" progression_name="perkEnforcerComplete" operation="Equals" value="1" />
+        </passive_effect>
+        <passive_effect name="DamageModifier" operation="perc_add" value="-.8" tags="earth" />
+        <passive_effect name="DamageModifier" operation="perc_add" value="2" tags="wood" />
+      </effect_group>
+
+      <effect_group name="shockingAmmo" tiered="false">
+        <!--@todo This appears to be causing buff to not work -->
+        <!--<passive_effect name="EntityDamage" operation="perc_add" value=".15,.95" tags="perkElectrocutioner" />-->
+        <!---->
+        <triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="$buffShockedAmmoDuration" operation="set" value="2.5" />
+        <triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffShockedAmmo" duration="2.5">
+          <requirement name="RandomRoll" seed_type="Random" min_max="1,100" operation="LTE" value="25" />
+        </triggered_effect>
+
+        <triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="otherAOE" range="1.5" target_tags="zombie,animal" buff="buffShockedAmmo" duration="2.5">
+          <requirement name="RandomRoll" seed_type="Random" min_max="1,100" operation="LTE" value="10" />
         </triggered_effect>
 
         <display_value name="dShockDuration" value="2.5" />
@@ -38,9 +107,27 @@
     </item>
   </append>
 
+  <!-- 9mm Ammo -->
   <append xpath="/items/item[@name='gunHandgunT3SMG5'
     or @name='gunHandgunT1Pistol'
     or @name='gunHandgunT0PipePistol']/property[@class='Action0']">
     <property name="Magazine_items" value="ammo9mmBulletBall,ammo9mmBulletHP,ammo9mmBulletAP,shockingAmmo9mmAmmo" />
+  </append>
+
+  <!-- .44 Mag -->
+  <append xpath="/items/item[@name='gunHandgunT3DesertVulture'
+    or @name='gunHandgunT2Magnum44']/property[@class='Action0']">
+    <property name="Magazine_items" value="ammo44MagnumBulletBall,ammo44MagnumBulletHP,ammo44MagnumBulletAP,shockingAmmo44MagnumAmmo" />
+  </append>
+
+  <!-- 7.62mm Ammo -->
+  <append xpath="/items/item[@name='gunRifleT0PipeRifle'
+    or @name='gunRifleT1HuntingRifle'
+    or @name='gunRifleT2LeverActionRifle'
+    or @name='gunRifleT3SniperRifle'
+    or @name='gunMGT1AK47'
+    or @name='gunMGT2TacticalAR'
+    or @name='gunMGT3M60']/property[@class='Action0']">
+    <property name="Magazine_items" value="ammo762mmBulletBall,ammo762mmBulletHP,ammo762mmBulletAP,shockingAmmo762mmAmmo" />
   </append>
 </configs>
