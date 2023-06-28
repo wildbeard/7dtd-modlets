@@ -1,9 +1,9 @@
 Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate Text
 shockingAmmo9mmAmmo,items,Ammo,,,Shocking 9mm Ammo,
-shockingAmmo9mmAmmoDesc,items,Ammo,,,Ammo with a chance to shock the enemy for 2.5s. Has a chance to spread to nearby enemies.,
+shockingAmmo9mmAmmoDesc,items,Ammo,,,Ammo with a chance to shock the enemy for 1s. Has a chance to spread to nearby enemies.,
 shockingAmmo44MagnumAmmo,items,Ammo,,,Shocking .44 Magnum Ammo,
-shockingAmmo44MagnumDesc,items,Ammo,,,Ammo with a chance to shock the enemy for 2.5s. Has a chance to spread to nearby enemies.,
+shockingAmmo44MagnumDesc,items,Ammo,,,Ammo with a chance to shock the enemy for 1s. Has a chance to spread to nearby enemies.,
 shockingAmmo762mmAmmo,items,Ammo,,,Shocking 7.62mm Ammo,
-shockingAmmo762mmAmmoDesc,items,Ammo,,,Ammo with a chance to shock the enemy for 2.5s. Has a chance to spread to nearby enemies.,
+shockingAmmo762mmAmmoDesc,items,Ammo,,,Ammo with a chance to shock the enemy for 1s. Has a chance to spread to nearby enemies.,
 buffShockedAmmo,buffs,Buff,,,You are shocked,
 statShockDuration,ui_display,Item stat,,Shock Duration
